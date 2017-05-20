@@ -44,7 +44,7 @@ class Wheel:
                     sys.stdout.write("!? ARE YOU READY ?! \t%d\t%s \r" % (number,part))
                 sys.stdout.flush()
                 time.sleep(.01 * i)
-        return number.__str__()
+        return number
 
 class Game:
 
@@ -67,20 +67,20 @@ class Game:
         while (guess < 0 or guess > 36):
             self.clear_console()
             self.printLine("Guess a number between 0 - 36 [Enter] : ")
-            guess = raw_input()
+            guess = int(raw_input())
         num = self.spinWheel.spin()
         if (guess == num):
             self.clear_console()
-            self.printLine("and the number is : " + num + "#\n\nOMG YOU GOT IT!!!!\nYOU ARE A LUCKY PERSON\n+36 Credits\npress Enter to continue...")
+            self.printLine("and the number is : " + str(num) + "#\n\nOMG YOU GOT IT!!!!\nYOU ARE A LUCKY PERSON\n+36 Credits\npress Enter to continue...")
             raw_input()
             self._credits.addCredits(36)
         else:
             self.clear_console()
-            self.printLine("and the number is : " + num + "\n\nWrong number guessed\nyou should try again :-)\npress Enter to continue...")
+            self.printLine("and the number is : " + str(num) + "\n\nWrong number guessed\nyou should try again :-)\npress Enter to continue...")
             raw_input()
 
     def printLine(self,line=""):
-        sys.stdout.write("SCORE : %d \n" % self._credits.getCredits() + "\n\n"+line)
+        sys.stdout.write("SCORE : %d \n" % self._credits.getCredits() + "\n\n"+str(line))
         sys.stdout.flush()
 
 

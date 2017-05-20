@@ -1,3 +1,13 @@
+##############################################
+#   Created By Omri Haviv                    #
+#   For Vidazoo home hssignment              #
+#                                            #
+#   this is a roullete game                  #
+#   by spining the wheel you insert one coin #
+#   if you guess the right number            #
+#   you get 36 coins                         #
+##############################################
+
 import sys
 import time
 import random
@@ -15,7 +25,6 @@ class Credits:
 
     def insertCredit(self):
         self._credits -= 1
-
 
 class Wheel:
 
@@ -45,24 +54,28 @@ class Game:
 
 
     def Menu(self):
-        os.system('cls')
-        self.printLine()
-        print "1.Spin The Wheel"
-        print "2.Quit"
+        self.clear_console()
+        self.printLine("1.Spin The Wheel\n2.Quit\n")
         return raw_input(">> ")
 
+    def clear_console(self):
+        os.system('cls' if os.name == 'nt' else 'clear')
+
     def spinner(self):
+        guess = -1
         self._credits.insertCredit()
-        self.printLine("Guess a number between 0 - 36 [Enter] : ")
-        guess = raw_input()
+        while (guess < 0 or guess > 36):
+            self.clear_console()
+            self.printLine("Guess a number between 0 - 36 [Enter] : ")
+            guess = raw_input()
         num = self.spinWheel.spin()
         if (guess == num):
-            os.system('cls')
+            self.clear_console()
             self.printLine("and the number is : " + num + "#\n\nOMG YOU GOT IT!!!!\nYOU ARE A LUCKY PERSON\n+36 Credits\npress Enter to continue...")
             raw_input()
             self._credits.addCredits(36)
         else:
-            os.system('cls')
+            self.clear_console()
             self.printLine("and the number is : " + num + "\n\nWrong number guessed\nyou should try again :-)\npress Enter to continue...")
             raw_input()
 
@@ -75,7 +88,7 @@ if (__name__ == "__main__"):
     game = Game()
     while (True):
         option = game.Menu()
-        os.system('cls')
+        game.clear_console()
         if (option == '1'):
             game.spinner()
         elif (option == '2'):

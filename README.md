@@ -14,5 +14,6 @@ dockerfile<br>
 by useing the docker build -t #NAME# .<br>
 and docker -i run #NAME#<br>
 the roullete game will start in a container.<br>
-the -i flag is set because the game is interactive.<br>
+the -i flag is set because the game is interactive.<br><br>
+#FIXED<br>
 One thing will be different - the 'clear' command (to clear the console) won't work<br>

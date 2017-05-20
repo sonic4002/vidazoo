@@ -1,7 +1,7 @@
 # vidazoo
 this is a home assignment for vidazoo
 
-bash script
+bash script<br>
 input a NAME and a DATE OF BIRTH (foramt - DD/MM/YY)
 output "Happy B-Day if the date entered is today", otherwise "no presents"
             
